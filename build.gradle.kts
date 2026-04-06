@@ -27,7 +27,15 @@ tasks.test {
     //useJUnitPlatform()
     useJUnit()
     finalizedBy(tasks.jacocoTestReport)
+    systemProperty("file.encoding", "UTF-8")
+    jvmArgs = listOf("-Dfile.encoding=UTF-8")
+
 }
 kotlin {
     jvmToolchain(21)
+}
+
+tasks.withType<JavaExec> {
+    systemProperty("file.encoding", "UTF-8")
+    jvmArgs = listOf("-Dfile.encoding=UTF-8")
 }

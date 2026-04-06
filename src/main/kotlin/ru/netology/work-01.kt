@@ -2,13 +2,13 @@ data class Post(
     val id: Int = 0,
     val ownerId: Int = 0,
     val fromId: Int = 0,
-    val createdBy: Int = 0,
+    val createdBy: Int? = null,
     val date: Long = 0,
-    val text: String = "",
-    val replyOwnerId: Int = 0,
-    val replyPostId: Int = 0,
+    val text: String? = null,
+    val replyOwnerId: Int? = null,
+    val replyPostId: Int? = null,
     val friendsOnly: Boolean = false,
-    val comments: Comments = Comments(),
+    val comments: Comments? = null,
     val likes: Likes = Likes(),
     val markedAsAds: Boolean = false,
     val isFavorite: Boolean = false
@@ -55,6 +55,7 @@ object WallService {
 
     fun printPosts() {
         for (post in posts) {
+            println("Привет")
             println(post)
         }
     }
@@ -66,6 +67,7 @@ object WallService {
 }
 
 fun main() {
+    println("Привет мир")
     val post1 = WallService.add(
         Post(
             ownerId = 1,

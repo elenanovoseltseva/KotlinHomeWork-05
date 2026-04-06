@@ -1,3 +1,71 @@
+interface Attachment {
+    val type: String
+}
+
+data class Photo(
+    val id: Int,
+    val ownerId: Int,
+    val photo130: String,
+    val photo604: String
+)
+
+data class PhotoAttachment(
+    val photo: Photo
+) : Attachment {
+    override val type: String = "photo"
+}
+
+data class Video(
+    val id: Int,
+    val ownerId: Int,
+    val title: String,
+    val duration: Int
+)
+
+data class VideoAttachment(
+    val video: Video
+) : Attachment {
+    override val type: String = "video"
+}
+
+data class Audio(
+    val id: Int,
+    val ownerId: Int,
+    val artist: String,
+    val title: String,
+    val duration: Int
+)
+
+data class AudioAttachment(
+    val audio: Audio
+) : Attachment {
+    override val type: String = "audio"
+}
+
+data class Doc(
+    val id: Int,
+    val ownerId: Int,
+    val title: String,
+    val size: Int
+)
+
+data class DocAttachment(
+    val doc: Doc
+) : Attachment {
+    override val type: String = "doc"
+}
+
+data class Link(
+    val url: String,
+    val title: String
+)
+
+data class LinkAttachment(
+    val link: Link
+) : Attachment {
+    override val type: String = "link"
+}
+
 data class Post(
     val id: Int = 0,
     val ownerId: Int = 0,
@@ -11,7 +79,8 @@ data class Post(
     val comments: Comments? = null,
     val likes: Likes = Likes(),
     val markedAsAds: Boolean = false,
-    val isFavorite: Boolean = false
+    val isFavorite: Boolean = false,
+    val attachments: Array<Attachment> = emptyArray()
 )
 
 data class Likes(

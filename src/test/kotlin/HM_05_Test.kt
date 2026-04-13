@@ -31,23 +31,18 @@ class WallServiceTest {
             id = post.id,
             text = "New text"
         )
-
         val result = WallService.update(update)
-
         assertTrue(result)
     }
 
     @Test
     fun update_notExistingId_returnsFalse() {
         WallService.clear()
-
         val update = Post(
             id = 999,
             text = "No post"
         )
-
         val result = WallService.update(update)
-
         assertFalse(result)
     }
 }
